@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit task</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h1>Edit task:</h1>
+<form action="#" th:action="@{/task/edit}" th:object="${task}" method="post">
+    <p>Task id:
+        <select class="form-control" th:field="*{id}">
+            <option th:each="task : ${tasks}" th:value="${task.id}" th:text="${task.id}"></option>
+        </select>
+    </p>
+    <p>New task name: <input type="text" class="form-control"th:field="*{name}"/></p>
+    <p>New status:
+        <select class="form-control" th:field="*{status}">
+            <option value="ACTIVE">ACTIVE</option>
+            <option value="CLOSED">CLOSED</option>
+        </select>
+    </p>
+    <p>New priority:
+        <select class="form-control" th:field="*{priority}">
+            <option value="HIGH">HIGH</option>
+            <option value="MEDIUM">MEDIUM</option>
+            <option value="LOW">LOW</option>
+        </select>
+    </p>
+    <p><textarea class="form-control" name="description" th:field="*{text}" placeholder="New description"></textarea></p>
+    <span><input type="submit" class="btn btn-success" th:value="Edit"/></span>
+</form>
+</div>
+</body>
+</html>

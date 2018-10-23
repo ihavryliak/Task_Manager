@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Share task</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Share a task:</h1>
+    <form action="#" th:action="@{/task/share}" th:object="${task}" method="post">
+        <p>Task id:
+            <select class="form-control" th:field="*{id}">
+                <option th:each="task : ${tasks}" th:value="${task.id}" th:text="${task.id}"></option>
+            </select>
+        </p>
+        <p>To share with:
+        <select class="form-control" th:field="*{user}">
+            <option th:each="user : ${users}" th:value="${user.username}" th:text="${user.username}"></option>
+        </select>
+        </p>
+        <span><input type="submit" class="btn btn-success" th:value="Share"/></span>
+    </form>
+</div>
+</body>
+</html>

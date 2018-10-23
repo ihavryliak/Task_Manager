@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron">
+    <div class="container">
+    <h1>Registration</h1>
+    <form action="#" th:action="@{/registration}" th:object="${user}" method="post">
+          <p>Email: <input type="email" class="form-control"th:field="*{username}" /></p>
+        <p>Password: <input type="password" class="form-control" th:field="*{password}" /></p>
+           <p><span><a href="#">Forgot password? </a></span></p>
+        <span><input type="submit" class="btn btn-success" th:value="Register" /></span>
+        </form>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task list</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="table-responsive">
+    <div class="container">
+        <h1>List of tasks:</h1>
+        <form action="/task/display" method="get">
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Description</th>
+                    <th>User</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${tasks.empty}">
+                    <td colspan="2"> No tasks available</td>
+                </tr>
+                <tr th:each="task : ${tasks}">
+                    <td><span th:text="${task.id}">id </span></td>
+                    <td><span th:text="${task.name}">Task name </span></td>
+                    <td><span th:text="${task.status}">Status </span></td>
+                    <td><span th:text="${task.priority}">Priority </span></td>
+                    <td><span th:text="${task.text}">Description </span></td>
+                    <td><span th:text="${task.user}">User </span></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <a class="btn btn-info" href="#" th:href="@{/task}"> Back to task menu </a>
+    </div>
+</div>
+
+</body>
+</html>
